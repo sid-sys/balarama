@@ -14,7 +14,7 @@
     <button class="prev" type="button">Prev</button>
     <button class="next" type="button">Next</button>
     <p>page number:0</p>
-    <p>Goto (between 1 & 85): <input type="number" id="test" value="1"></p>
+    <div>Goto (between 1 & 85): <input type="number" id="test" value="1"></div>
     <button class="goto">Goto</button>
     <script>
         $(document).ready(function() {
@@ -34,7 +34,7 @@
                     // alert("url1 on outside loop" + url1)
                     var url2 = "_PR.jpg"
                     number++;
-//                     alert(number);
+                    // alert(number);
                     $('iframe').attr('src', url1 + number + url2)
                         // alert(url1 + number + url2);
                 } else {
@@ -62,16 +62,16 @@
                 $("p").text("page number:" + number);
             });
             $(".goto").click(function() {
-//                 alert("Value: " + $("#test").val());
-                var gotoNumber = $("#test").val();
-                if (gotoNumber >= 8) {
+                // alert("Value: " + $("#test").val());
+                number = $("#test").val();
+                if (number >= 8) {
                     var url1 = "https://static-editions.manoramaonline.com/EMagazineDocRoot/MMBalarama/2022/07/02/MMBalarama_2022_07_02_0"
                 } else {
                     var url1 = "https://static-editions.manoramaonline.com/EMagazineDocRoot/MMBalarama/2022/07/02/MMBalarama_2022_07_02_00"
                 }
                 var url2 = "_PR.jpg"
-                $('iframe').attr('src', url1 + gotoNumber + url2)
-                $("p").text("page number:" + gotoNumber);
+                $('iframe').attr('src', url1 + number + url2)
+                $("p").text("page number:" + number);
             });
         });
     </script>
