@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <title>Document</title>
+</head>
+
+<body>
+    <iframe src="https://static-editions.manoramaonline.com/EMagazineDocRoot/MMBalarama/2022/07/02/MMBalarama_2022_07_02_001_PR.jpg" height="800px" width="900px"></iframe>
+    <button class="prev" type="button">Prev</button>
+    <button class="next" type="button">Next</button>
+    <p>page number:0</p>
+    <div>Goto (between 1 & 85): <input type="number" id="test" value="1"></div>
+    <button class="goto">Goto</button>
+    <script>
+        $(document).ready(function() {
+            var number = 1
+            var max_value = 85
+            var min_value = 1
+                // next button fn            
+            $(".next").click(function() {
+                if (number != max_value) {
+                    if (number > 8) {
+                        // alert("number greater than 9")
+                        var url1 = "https://static-editions.manoramaonline.com/EMagazineDocRoot/MMBalarama/2022/07/02/MMBalarama_2022_07_02_0"
+                            // alert("url1 on inside loop" + url1)
+                    } else {
+                        var url1 = "https://static-editions.manoramaonline.com/EMagazineDocRoot/MMBalarama/2022/07/02/MMBalarama_2022_07_02_00"
+                    }
+                    // alert("url1 on outside loop" + url1)
+                    var url2 = "_PR.jpg"
+                    number++;
+                    // alert(number);
+                    $('iframe').attr('src', url1 + number + url2)
+                        // alert(url1 + number + url2);
+                } else {
+                    $(".next").attr("disabled", true);
+                }
+                $("p").text("page number:" + number);
+            });
+            // previous button fn
+            $(".prev").click(function() {
+                // alert(number);
+                if (number != min_value) {
+                    if (number >= 8) {
+                        var url1 = "https://static-editions.manoramaonline.com/EMagazineDocRoot/MMBalarama/2022/07/02/MMBalarama_2022_07_02_0"
+                    } else {
+                        var url1 = "https://static-editions.manoramaonline.com/EMagazineDocRoot/MMBalarama/2022/07/02/MMBalarama_2022_07_02_00"
+                    }
+                    var url2 = "_PR.jpg"
+                    number--;
+                    // alert(number);
+                    $('iframe').attr('src', url1 + number + url2)
+                        // alert(url1 + number + url2);
+                } else {
+                    $(".prev").attr("disabled", true);
+                }
+                $("p").text("page number:" + number);
+            });
+            $(".goto").click(function() {
+                // alert("Value: " + $("#test").val());
+                number = $("#test").val();
+                if (number >= 8) {
+                    var url1 = "https://static-editions.manoramaonline.com/EMagazineDocRoot/MMBalarama/2022/07/02/MMBalarama_2022_07_02_0"
+                } else {
+                    var url1 = "https://static-editions.manoramaonline.com/EMagazineDocRoot/MMBalarama/2022/07/02/MMBalarama_2022_07_02_00"
+                }
+                var url2 = "_PR.jpg"
+                $('iframe').attr('src', url1 + number + url2)
+                $("p").text("page number:" + number);
+            });
+        });
+    </script>
+</body>
+
+</html>
